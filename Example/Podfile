@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'HalfModalView_Example' do
+  pod 'HalfModalView', :path => '../'
+
+  target 'HalfModalView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

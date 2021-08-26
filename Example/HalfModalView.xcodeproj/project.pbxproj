@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0267E2C526D7E28100363CF0 /* HalfModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0267E2C426D7E28100363CF0 /* HalfModalViewController.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
@@ -28,8 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0267E2C426D7E28100363CF0 /* HalfModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfModalViewController.swift; sourceTree = "<group>"; };
 		0F45FA9970E90E35651465A9 /* Pods_HalfModalView_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HalfModalView_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		12F238D65750B49B30690A86 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		12F238D65750B49B30690A86 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		22A10A65B5E9495BC682919C /* Pods-HalfModalView_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalfModalView_Example.debug.xcconfig"; path = "Target Support Files/Pods-HalfModalView_Example/Pods-HalfModalView_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		2845CC09D217835085C780C9 /* Pods_HalfModalView_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HalfModalView_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A17F9BCF5F95060786FD22 /* Pods-HalfModalView_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalfModalView_Tests.release.xcconfig"; path = "Target Support Files/Pods-HalfModalView_Tests/Pods-HalfModalView_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -45,8 +47,8 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		922EDECD6BF7D2740F59E9DF /* Pods-HalfModalView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalfModalView_Example.release.xcconfig"; path = "Target Support Files/Pods-HalfModalView_Example/Pods-HalfModalView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9DCA2311DA90620963C2169D /* Pods-HalfModalView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalfModalView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-HalfModalView_Tests/Pods-HalfModalView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C34DD7BB348278C5F4FE2313 /* HalfModalView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = HalfModalView.podspec; path = ../HalfModalView.podspec; sourceTree = "<group>"; };
-		DBCDDCEB385BAAC68DA507EC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		C34DD7BB348278C5F4FE2313 /* HalfModalView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HalfModalView.podspec; path = ../HalfModalView.podspec; sourceTree = "<group>"; };
+		DBCDDCEB385BAAC68DA507EC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,10 +95,11 @@
 		607FACD21AFB9204008FA782 /* Example for HalfModalView */ = {
 			isa = PBXGroup;
 			children = (
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				0267E2C426D7E28100363CF0 /* HalfModalViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
@@ -156,7 +159,6 @@
 				9DCA2311DA90620963C2169D /* Pods-HalfModalView_Tests.debug.xcconfig */,
 				56A17F9BCF5F95060786FD22 /* Pods-HalfModalView_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +229,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -331,6 +334,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0267E2C526D7E28100363CF0 /* HalfModalViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

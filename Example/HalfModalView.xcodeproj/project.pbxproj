@@ -47,7 +47,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		922EDECD6BF7D2740F59E9DF /* Pods-HalfModalView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalfModalView_Example.release.xcconfig"; path = "Target Support Files/Pods-HalfModalView_Example/Pods-HalfModalView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9DCA2311DA90620963C2169D /* Pods-HalfModalView_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalfModalView_Tests.debug.xcconfig"; path = "Target Support Files/Pods-HalfModalView_Tests/Pods-HalfModalView_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		C34DD7BB348278C5F4FE2313 /* HalfModalView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HalfModalView.podspec; path = ../HalfModalView.podspec; sourceTree = "<group>"; };
+		C34DD7BB348278C5F4FE2313 /* HalfModalView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = HalfModalView.podspec; path = ../HalfModalView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DBCDDCEB385BAAC68DA507EC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 

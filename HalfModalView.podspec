@@ -21,11 +21,11 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/최승명/HalfModalView'
+  s.homepage         = 'https://github.com/710csm/HalfModalView'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '최승명' => '710csm@naver.com' }
-  s.source           = { :git => 'https://github.com/최승명/HalfModalView.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/710csm/HalfModalView.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '9.0'

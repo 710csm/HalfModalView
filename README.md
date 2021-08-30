@@ -1,6 +1,6 @@
 # HalfModalView
 
-[![CI Status](https://img.shields.io/travis/최승명/HalfModalView.svg?style=flat)](https://travis-ci.org/최승명/HalfModalView)
+[![CI Status](https://app.travis-ci.com/710csm/HalfModalView.svg?branch=main)](https://app.travis-ci.com/github/710csm/HalfModalView)
 [![Version](https://img.shields.io/cocoapods/v/HalfModalView.svg?style=flat)](https://cocoapods.org/pods/HalfModalView)
 [![License](https://img.shields.io/cocoapods/l/HalfModalView.svg?style=flat)](https://cocoapods.org/pods/HalfModalView)
 [![Platform](https://img.shields.io/cocoapods/p/HalfModalView.svg?style=flat)](https://cocoapods.org/pods/HalfModalView)

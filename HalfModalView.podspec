@@ -26,6 +26,6 @@ TODO: Add long description of the pod here.
   s.author           = { 'ChoiSeungMyeong' => '710csm@naver.com' }
   s.source           = { :git => 'https://github.com/710csm/HalfModalView.git', :tag => s.version.to_s }
   s.swift_version    = '5.0'
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '9'
   s.source_files = 'HalfModalView/Classes/**/*'
 end

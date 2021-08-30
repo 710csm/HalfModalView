@@ -21,17 +21,8 @@ class ViewController: UIViewController {
         let label = UILabel()
         label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. \n\nUt morbi tincidunt augue interdum velit euismod in pellentesque massa. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a. Eget nullam non nisi est sit amet. Odio pellentesque diam volutpat commodo. Id eu nisl nunc mi ipsum faucibus vitae.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. Ut morbi tincidunt augue interdum velit euismod in pellentesque massa."
         label.font = .systemFont(ofSize: 16)
-        label.textColor = .darkGray
         label.numberOfLines = 0
         return label
-    }()
-    
-    lazy var contentStackView: UIStackView = {
-        let spacer = UIView()
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, contentLabel, spacer])
-        stackView.axis = .vertical
-        stackView.spacing = 12.0
-        return stackView
     }()
 
     override func viewDidLoad() {
@@ -47,15 +38,18 @@ class ViewController: UIViewController {
         halfModal.modalPresentationStyle = .overCurrentContext
         
         // add to baseView of HalfModalView
-        halfModal.baseView.addSubview(contentStackView)
-        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+        halfModal.baseView.addSubview(titleLabel)
+        halfModal.baseView.addSubview(contentLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // set constrain based on baseView of HalfModalView
         NSLayoutConstraint.activate([
-            contentStackView.topAnchor.constraint(equalTo: halfModal.baseView.topAnchor, constant: 32),
-            contentStackView.bottomAnchor.constraint(equalTo: halfModal.baseView.bottomAnchor, constant: -20),
-            contentStackView.leadingAnchor.constraint(equalTo: halfModal.baseView.leadingAnchor, constant: 20),
-            contentStackView.trailingAnchor.constraint(equalTo: halfModal.baseView.trailingAnchor, constant: -20),
+            titleLabel.topAnchor.constraint(equalTo: halfModal.baseView.topAnchor, constant: 30),
+            titleLabel.centerXAnchor.constraint(equalTo: halfModal.baseView.centerXAnchor),
+            
+            contentLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 10),
+            contentLabel.centerXAnchor.constraint(equalTo: halfModal.baseView.centerXAnchor)
         ])
         
         self.present(halfModal, animated: false)

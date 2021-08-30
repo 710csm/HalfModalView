@@ -26,9 +26,10 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { '최승명' => '710csm@naver.com' }
   s.source           = { :git => 'https://github.com/710csm/HalfModalView.git', :tag => s.version.to_s }
+  s.swift_version    = '5.0'
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'HalfModalView/Classes/**/*'
   

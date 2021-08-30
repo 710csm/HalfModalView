@@ -60,7 +60,8 @@ open class HalfModalViewController: UIViewController {
         view.backgroundColor = .clear
     }
     
-    private func setupConstraints() {
+    // set up base view and background view constraints
+    public func setupConstraints() {
         // add subviews
         view.addSubview(backgroundView)
         view.addSubview(baseView)
@@ -96,7 +97,7 @@ open class HalfModalViewController: UIViewController {
     }
     
     // MARK: - Set Gesture
-    private func setupPanGesture() {
+    public func setupPanGesture() {
         // add tap gesture recognizer to the backgroundView
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
         backgroundView.addGestureRecognizer(tapGesture)
@@ -110,7 +111,7 @@ open class HalfModalViewController: UIViewController {
     }
     
     // MARK: Present and dismiss animation
-    private func animateBaseViewHeight(_ height: CGFloat) {
+    public func animateBaseViewHeight(_ height: CGFloat) {
         UIView.animate(withDuration: 0.3) {
             // update baseView height
             self.baseViewHeightConstraint?.constant = height
@@ -121,7 +122,7 @@ open class HalfModalViewController: UIViewController {
         currentBaseViewHeight = height
     }
     
-    private func animatePresentBaseView() {
+    public func animatePresentBaseView() {
         // update bottom constraint in animation block
         UIView.animate(withDuration: 0.3) {
             self.baseViewBottomConstraint?.constant = 0
@@ -130,14 +131,14 @@ open class HalfModalViewController: UIViewController {
         }
     }
     
-    private func animateShowBackgroundView() {
+    public func animateShowBackgroundView() {
         backgroundView.alpha = 0
         UIView.animate(withDuration: 0.3) {
             self.backgroundView.alpha = self.backgrounAlpha
         }
     }
     
-    private func animateBackgroundView() {
+    public func animateBackgroundView() {
         // hide blur view
         backgroundView.alpha = backgrounAlpha
         UIView.animate(withDuration: 0.3) {

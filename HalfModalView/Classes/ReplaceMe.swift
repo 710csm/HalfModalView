@@ -36,8 +36,8 @@ open class HalfModalViewController: UIViewController {
     public var currentBaseViewHeight: CGFloat = 300
     
     // dynamic container constraint
-    private var baseViewHeightConstraint: NSLayoutConstraint?
-    private var baseViewBottomConstraint: NSLayoutConstraint?
+    public var baseViewHeightConstraint: NSLayoutConstraint?
+    public var baseViewBottomConstraint: NSLayoutConstraint?
     
     // MARK: - Override Method
     open override func viewDidLoad() {
@@ -183,20 +183,20 @@ open class HalfModalViewController: UIViewController {
             // this happens when user stop drag,
             // so we will get the last height of baseView
             
-            // condition 1: If new height is below min, dismiss controller
+            // condition 1: if new height is below min, dismiss controller
             if newHeight < dismissibleHeight {
                 self.animateBackgroundView()
             }
             else if newHeight < defaultHeight {
-                // condition 2: If new height is below default, animate back to default
+                // condition 2: if new height is below default, animate back to default
                 animateBaseViewHeight(defaultHeight)
             }
             else if newHeight < maximumBaseViewHeight && isDraggingDown {
-                // condition 3: If new height is below max and going down, set to default height
+                // condition 3: if new height is below max and going down, set to default height
                 animateBaseViewHeight(defaultHeight)
             }
             else if newHeight > defaultHeight && !isDraggingDown {
-                // condition 4: If new height is below max and going up, set to max height at top
+                // condition 4: if new height is below max and going up, set to max height at top
                 animateBaseViewHeight(maximumBaseViewHeight)
             }
         default:

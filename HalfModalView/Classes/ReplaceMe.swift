@@ -3,7 +3,6 @@ import UIKit
 open class HalfModalViewController: UIViewController {
     
     // MARK: - Properties
-    
     // main view of HalfModalViewController
     public lazy var baseView: UIView = {
         let view = UIView()

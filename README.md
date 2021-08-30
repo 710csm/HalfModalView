@@ -7,6 +7,14 @@
 
 ## Requirements
 
+- iOS 10.0+ 
+- Xcode 10.0+
+- Swift 4.0+
+
+## Example
+
+![example](https://user-images.githubusercontent.com/45002556/131328908-e0a4dd40-86bd-48ea-a2e0-25c736c7a1ad.gif)
+
 ## Installation
 
 CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
@@ -92,7 +100,7 @@ class ViewController: UIViewController {
 
 ## Author
 
-최승명, 710csm@naver.com
+ChoiSeungMyeong, 710csm@naver.com
 
 ## License
 

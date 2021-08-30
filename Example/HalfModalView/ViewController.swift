@@ -10,16 +10,18 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let halfModal = HalfModalViewController()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Get Started"
+        label.text = "Title Label"
         label.font = .boldSystemFont(ofSize: 20)
         return label
     }()
     
     lazy var contentLabel: UILabel = {
         let label = UILabel()
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. \n\nUt morbi tincidunt augue interdum velit euismod in pellentesque massa. Pulvinar etiam non quam lacus suspendisse faucibus interdum posuere. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci a. Eget nullam non nisi est sit amet. Odio pellentesque diam volutpat commodo. Id eu nisl nunc mi ipsum faucibus vitae.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sem fringilla ut morbi tincidunt augue interdum. Ut morbi tincidunt augue interdum velit euismod in pellentesque massa."
+        label.text = "Half Modal View Test"
         label.font = .systemFont(ofSize: 16)
         label.numberOfLines = 0
         return label
@@ -27,14 +29,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setHalfModalView()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-    @IBAction func presentHalfModalView(_ sender: Any) {
-        let halfModal = HalfModalViewController()
+    
+    func setHalfModalView() {
+        // modalPresentationStyle must set to overCurrentContext
         halfModal.modalPresentationStyle = .overCurrentContext
         
         // add to baseView of HalfModalView
@@ -48,10 +52,12 @@ class ViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: halfModal.baseView.topAnchor, constant: 30),
             titleLabel.centerXAnchor.constraint(equalTo: halfModal.baseView.centerXAnchor),
             
-            contentLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 10),
+            contentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             contentLabel.centerXAnchor.constraint(equalTo: halfModal.baseView.centerXAnchor)
         ])
-        
+    }
+
+    @IBAction func presentHalfModalView(_ sender: Any) {
         self.present(halfModal, animated: false)
     }
 }

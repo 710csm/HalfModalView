@@ -2,7 +2,8 @@ import UIKit
 
 open class HalfModalViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - UI Components
+    
     // main view of HalfModalViewController
     public lazy var baseView: UIView = {
         let view = UIView()
@@ -12,58 +13,94 @@ open class HalfModalViewController: UIViewController {
         return view
     }()
     
-    // transparency of background
-    public let backgrounAlpha: CGFloat = 0.4
-    
     // background above main view
-    public lazy var backgroundView: UIView = {
+    private lazy var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.alpha = backgrounAlpha
         return view
     }()
     
-    // default base view height
-    public let defaultHeight: CGFloat = 300
-    
-    // height of baseView disappearance
-    public let dismissibleHeight: CGFloat = 200
+    // MARK: - Properties
     
     // maximum height of base view
-    public let maximumBaseViewHeight: CGFloat = UIScreen.main.bounds.height - 64
+    private let maximumBaseViewHeight: CGFloat = UIScreen.main.bounds.height - 64
+    
+    // default base view height
+    private var defaultHeight: CGFloat = 450
+    
+    // height of baseView disappearance
+    private var dismissibleHeight: CGFloat = 300
     
     // keep current new height, initial is default height
-    public var currentBaseViewHeight: CGFloat = 300
+    private var currentBaseViewHeight: CGFloat = 450
+    
+    // transparency of background
+    private var backgrounAlpha: CGFloat = 0.4 {
+        didSet {
+            backgroundView.alpha = backgrounAlpha
+        }
+    }
     
     // dynamic container constraint
-    public var baseViewHeightConstraint: NSLayoutConstraint?
-    public var baseViewBottomConstraint: NSLayoutConstraint?
+    private var baseViewHeightConstraint: NSLayoutConstraint?
+    private var baseViewBottomConstraint: NSLayoutConstraint?
     
-    // MARK: - Override Method
+    public var topAchor: NSLayoutYAxisAnchor {
+        baseView.topAnchor
+    }
+    public var leadingAnchor: NSLayoutXAxisAnchor {
+        baseView.leadingAnchor
+    }
+    public var trailingAnchor: NSLayoutXAxisAnchor {
+        baseView.trailingAnchor
+    }
+    public var bottomAnchor: NSLayoutYAxisAnchor {
+        baseView.bottomAnchor
+    }
+    
+    public var centerXAnchor: NSLayoutXAxisAnchor {
+        baseView.centerXAnchor
+    }
+    public var centerYAnchor: NSLayoutYAxisAnchor {
+        baseView.centerYAnchor
+    }
+    public var center: CGPoint {
+        baseView.center
+    }
+    
+    // MARK: - Life Cycle
+    
     open override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupConstraints ()
+        setupConstraints()
         setupPanGesture()
     }
     
     // run animation when view appears
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animateShowBackgroundView()
-        animatePresentBaseView()
+        beginShowBackgroundView()
+        beginShowBaseView()
+    }
+    
+    open override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        resetBaseViewHeight()
     }
     
     // MARK: - Set View
+    
     private func setupView() {
-        view.backgroundColor = .clear
+        self.view.backgroundColor = .clear
     }
     
     // set up base view and background view constraints
     public func setupConstraints() {
         // add subviews
-        view.addSubview(backgroundView)
-        view.addSubview(baseView)
+        self.view.addSubview(backgroundView)
+        self.view.addSubview(baseView)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         baseView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -95,22 +132,43 @@ open class HalfModalViewController: UIViewController {
         baseViewBottomConstraint?.isActive = true
     }
     
+    public func addSubview(_ view: UIView) {
+        baseView.addSubview(view)
+    }
+    
+    public func setDefaultHeight(_ hegiht: CGFloat) {
+        defaultHeight = hegiht
+    }
+    
+    public func setDismissibleHeight(_ hegiht: CGFloat) {
+        dismissibleHeight = hegiht
+    }
+    
+    public func setBackGroudViewAlpha(_ alpha: CGFloat) {
+        backgrounAlpha = alpha
+    }
+    
     // MARK: - Set Gesture
-    public func setupPanGesture() {
+    
+    private func setupPanGesture() {
         // add tap gesture recognizer to the backgroundView
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.handleCloseAction))
         backgroundView.addGestureRecognizer(tapGesture)
         
         // add pan gesture recognizer to the view controller's view (the whole screen)
         // change to false to immediately listen on gesture movement
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(gesture:)))
+        let panGesture = UIPanGestureRecognizer(
+            target: self,
+            action: #selector(handlePanGesture)
+        )
         panGesture.delaysTouchesBegan = false
         panGesture.delaysTouchesEnded = false
-        view.addGestureRecognizer(panGesture)
+        self.view.addGestureRecognizer(panGesture)
     }
     
     // MARK: Present and dismiss animation
-    public func animateBaseViewHeight(_ height: CGFloat) {
+    
+    private func updateBaseViewHeight(_ height: CGFloat) {
         UIView.animate(withDuration: 0.3) {
             // update baseView height
             self.baseViewHeightConstraint?.constant = height
@@ -121,7 +179,7 @@ open class HalfModalViewController: UIViewController {
         currentBaseViewHeight = height
     }
     
-    public func animatePresentBaseView() {
+    private func beginShowBaseView() {
         // update bottom constraint in animation block
         UIView.animate(withDuration: 0.3) {
             self.baseViewBottomConstraint?.constant = 0
@@ -130,14 +188,14 @@ open class HalfModalViewController: UIViewController {
         }
     }
     
-    public func animateShowBackgroundView() {
+    private func beginShowBackgroundView() {
         backgroundView.alpha = 0
         UIView.animate(withDuration: 0.3) {
             self.backgroundView.alpha = self.backgrounAlpha
         }
     }
     
-    public func animateBackgroundView() {
+    private func endShowBackgroundView() {
         // hide blur view
         backgroundView.alpha = backgrounAlpha
         UIView.animate(withDuration: 0.3) {
@@ -154,9 +212,16 @@ open class HalfModalViewController: UIViewController {
         }
     }
     
+    private func resetBaseViewHeight() {
+        currentBaseViewHeight = defaultHeight
+        baseViewHeightConstraint?.constant = defaultHeight
+        self.view.layoutIfNeeded()
+    }
+    
     // MARK: - objc Action
+    
     @objc func handleCloseAction() {
-        animateBackgroundView()
+        endShowBackgroundView()
     }
     
     @objc func handlePanGesture(gesture: UIPanGestureRecognizer) {
@@ -177,7 +242,7 @@ open class HalfModalViewController: UIViewController {
                 // keep updating the height constraint
                 baseViewHeightConstraint?.constant = newHeight
                 // refresh layout
-                view.layoutIfNeeded()
+                self.view.layoutIfNeeded()
             }
         case .ended:
             // this happens when user stop drag,
@@ -185,23 +250,22 @@ open class HalfModalViewController: UIViewController {
             
             // condition 1: if new height is below min, dismiss controller
             if newHeight < dismissibleHeight {
-                self.animateBackgroundView()
+                self.endShowBackgroundView()
             }
             else if newHeight < defaultHeight {
                 // condition 2: if new height is below default, animate back to default
-                animateBaseViewHeight(defaultHeight)
+                updateBaseViewHeight(defaultHeight)
             }
             else if newHeight < maximumBaseViewHeight && isDraggingDown {
                 // condition 3: if new height is below max and going down, set to default height
-                animateBaseViewHeight(defaultHeight)
+                updateBaseViewHeight(defaultHeight)
             }
             else if newHeight > defaultHeight && !isDraggingDown {
                 // condition 4: if new height is below max and going up, set to max height at top
-                animateBaseViewHeight(maximumBaseViewHeight)
+                updateBaseViewHeight(maximumBaseViewHeight)
             }
         default:
             break
         }
     }
-
 }

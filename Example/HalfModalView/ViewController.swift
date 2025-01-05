@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import HalfModalView
 
 class ViewController: UIViewController {
     
-    let halfModal = HalfModalViewController()
+    lazy var halfModal = HalfModalViewController()
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -32,28 +33,24 @@ class ViewController: UIViewController {
         
         setHalfModalView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     func setHalfModalView() {
         // modalPresentationStyle must set to overCurrentContext
         halfModal.modalPresentationStyle = .overCurrentContext
         
         // add to baseView of HalfModalView
-        halfModal.baseView.addSubview(titleLabel)
-        halfModal.baseView.addSubview(contentLabel)
+        halfModal.addSubview(titleLabel)
+        halfModal.addSubview(contentLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         contentLabel.translatesAutoresizingMaskIntoConstraints = false
 
         // set constrain based on baseView of HalfModalView
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: halfModal.baseView.topAnchor, constant: 30),
-            titleLabel.centerXAnchor.constraint(equalTo: halfModal.baseView.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: halfModal.topAchor, constant: 30),
+            titleLabel.centerXAnchor.constraint(equalTo: halfModal.centerXAnchor),
             
             contentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            contentLabel.centerXAnchor.constraint(equalTo: halfModal.baseView.centerXAnchor)
+            contentLabel.centerXAnchor.constraint(equalTo: halfModal.centerXAnchor)
         ])
     }
 
@@ -61,4 +58,3 @@ class ViewController: UIViewController {
         self.present(halfModal, animated: false)
     }
 }
-
